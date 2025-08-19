@@ -21,8 +21,7 @@ namespace Nop.Plugin.Auctions.Auction
             {
                 SystemName = "Auctions",
                 Title = "Auctions",
-                ControllerName = "AuctionsAdmin",
-                ActionName = "List",
+                Url = "~/Admin/AuctionsAdmin/List",
                 IconClass = "fa-dot-circle-o",
             };
 
