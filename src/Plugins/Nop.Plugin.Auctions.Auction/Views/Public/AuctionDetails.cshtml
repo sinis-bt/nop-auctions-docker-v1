@@ -1,0 +1,64 @@
+@model Nop.Plugin.Auctions.Auction.Models.Public.AuctionDetailsModel
+@{
+    Layout = "_ColumnsOne";
+    ViewData["Title"] = Model.Name;
+}
+<div class="page product-details-page">
+    <div class="page-body">
+        <div class="product-essential">
+            <!--product pictures-->
+            <div class="gallery">
+                <div class="picture">
+                    <img alt="@Model.PictureModels.FirstOrDefault()?.AlternateText" src="@Model.PictureModels.FirstOrDefault()?.ImageUrl" title="@Model.PictureModels.FirstOrDefault()?.Title" />
+                </div>
+            </div>
+            <div class="overview">
+                <div class="product-name">
+                    <h1>@Model.Name</h1>
+                </div>
+                <div class="short-description">
+                    @Model.ShortDescription
+                </div>
+                <div class="full-description">
+                    @Model.FullDescription
+                </div>
+
+                <div class="auction-info">
+                    <div class="prices">
+                        <span class="price actual-price">@Model.CurrentBid</span>
+                    </div>
+                    <div class="time-left">
+                        Time Left: <strong>@Model.TimeLeft</strong>
+                    </div>
+                    <div class="bid-form">
+                        <input type="text" class="bid-input" placeholder="Enter your bid" />
+                        <button type="button" class="button-1 bid-button">Place Bid</button>
+                    </div>
+                </div>
+
+                <div class="bid-history">
+                    <h3>Bidding History (@Model.NumberOfBids bids)</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Bidder</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var bid in Model.Bids)
+                            {
+                                <tr>
+                                    <td>@bid.CustomerName</td>
+                                    <td>@bid.BidAmount</td>
+                                    <td>@bid.Timestamp</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
