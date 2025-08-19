@@ -1,7 +1,20 @@
+@model List<Nop.Web.Models.Catalog.ProductOverviewModel>
 @{
     Layout = "_ColumnsOne";
+    ViewData["Title"] = "Auctions";
 }
-
-<h1>Auctions</h1>
-
-<p>Here is a list of all auction products.</p>
+<div class="page-title">
+    <h1>Auctions</h1>
+</div>
+<div class="page-body">
+    <div class="product-grid">
+        <div class="item-grid">
+            @foreach (var item in Model)
+            {
+                <div class="item-box">
+                    @await Html.PartialAsync("_ProductBox", item)
+                </div>
+            }
+        </div>
+    </div>
+</div>

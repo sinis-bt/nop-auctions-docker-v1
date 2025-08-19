@@ -1,5 +1,45 @@
+@model List<Nop.Plugin.Auctions.Auction.Models.Admin.AuctionModel>
 @{
     Layout = "_AdminLayout";
+    ViewData["Title"] = "Auctions";
 }
 
-<h1>Auctions List</h1>
+<div class="content-header">
+    <h1>
+        Auctions
+    </h1>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Highest Bid</th>
+                                    <th>Total Bids</th>
+                                    <th>End Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.HighestBid</td>
+                                        <td>@item.TotalBids</td>
+                                        <td>@item.EndDate</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
